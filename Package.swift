@@ -1,24 +1,19 @@
 // swift-tools-version:5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// Fork of ViewInspector with XCTest removed and module renamed to ViewInspectorRT.
+// App-target safe. Use nalexn/ViewInspector for test targets.
 
 import PackageDescription
 
 let package = Package(
-    name: "ViewInspector",
+    name: "ViewInspectorRT",
     defaultLocalization: "en",
     platforms: [
         .macOS(.v10_15), .iOS(.v12), .tvOS(.v13), .watchOS(.v7), .visionOS(.v1)
     ],
     products: [
-        .library(
-            name: "ViewInspector", targets: ["ViewInspector"]),
+        .library(name: "ViewInspectorRT", targets: ["ViewInspectorRT"]),
     ],
     targets: [
-        .target(
-            name: "ViewInspector", dependencies: []),
-        .testTarget(
-            name: "ViewInspectorTests",
-            dependencies: ["ViewInspector"],
-            resources: [.process("TestResources")]),
+        .target(name: "ViewInspectorRT", dependencies: [], path: "Sources/ViewInspector"),
     ]
 )

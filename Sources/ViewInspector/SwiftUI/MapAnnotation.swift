@@ -59,7 +59,7 @@ public extension MapAnnotation {
     
     func contentView() throws -> InspectableView<ViewType.ClassifiedView> {
         let view = try Inspector.attribute(label: "content", value: self)
-        let content = ViewInspector.Content(view, medium: .empty)
+        let content = ViewInspectorRT.Content(view, medium: .empty)
         return try .init(try Inspector.unwrap(content: content), parent: nil)
     }
 }

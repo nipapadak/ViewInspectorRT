@@ -5,7 +5,7 @@ import SwiftUI
 public protocol BasePopupPresenter {
     func buildPopup() throws -> Any
     func dismissPopup()
-    func content() throws -> ViewInspector.Content
+    func content() throws -> ViewInspectorRT.Content
     var isAlertPresenter: Bool { get }
     var isActionSheetPresenter: Bool { get }
     var isPopoverPresenter: Bool { get }
@@ -103,7 +103,7 @@ public extension ItemPopupPresenter where Popup == ActionSheet {
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 public extension ViewModifier where Self: BasePopupPresenter {
     @MainActor
-    func content() throws -> ViewInspector.Content {
+    func content() throws -> ViewInspectorRT.Content {
         let view = body(content: _ViewModifier_Content())
         return try view.inspect().implicitAnyView().viewModifierContent().content
     }
@@ -156,14 +156,14 @@ internal extension ViewType {
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType {
-    static let popupContainerTypePrefix = "ViewInspector.ViewType.PopupContainer"
+    static let popupContainerTypePrefix = "ViewInspectorRT.ViewType.PopupContainer"
 }
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 internal extension ViewType.PopupContainer {
     static var typePrefix: String {
         return ViewType.popupContainerTypePrefix +
-            "<ViewInspector.ViewType.\(Inspector.typeName(type: Popup.self))>"
+            "<ViewInspectorRT.ViewType.\(Inspector.typeName(type: Popup.self))>"
     }
 }
 

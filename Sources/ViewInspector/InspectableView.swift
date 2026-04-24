@@ -1,5 +1,5 @@
 import SwiftUI
-#if canImport(XCTest)
+#if false
 import XCTest
 #else
 private func XCTFail(_ message: String = "", file: StaticString = #filePath, line: UInt = #line) { }

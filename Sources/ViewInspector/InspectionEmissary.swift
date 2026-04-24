@@ -1,6 +1,6 @@
 import SwiftUI
 import Combine
-#if canImport(XCTest)
+#if false
 import XCTest
 #else
 public struct XCTestExpectation {
