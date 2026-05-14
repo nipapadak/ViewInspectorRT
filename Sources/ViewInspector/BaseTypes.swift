@@ -150,7 +150,7 @@ internal extension ViewType {
 @MainActor
 #endif
 public struct Content {
-    let view: Any
+    public let view: Any
     let medium: Medium
     
     internal init(_ view: Any, medium: Medium = .empty) {
@@ -164,14 +164,14 @@ public struct Content {
 }
 
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
-internal extension Content {
+public extension Content {
     struct Medium {
         let viewModifiers: [Any]
         let transitiveViewModifiers: [Any]
         let environmentModifiers: [EnvironmentModifier]
         let environmentObjects: [AnyObject]
         
-        static var empty: Medium {
+        public static var empty: Medium {
             return .init(viewModifiers: [],
                          transitiveViewModifiers: [],
                          environmentModifiers: [],

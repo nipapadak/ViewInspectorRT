@@ -149,7 +149,7 @@ internal extension Inspector {
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, *)
 internal extension Inspector {
 
-    static func attribute(label: String, value: Any) throws -> Any {
+    public static func attribute(label: String, value: Any) throws -> Any {
         if label == "super", let superclass = Mirror(reflecting: value).superclassMirror {
             return superclass
         }
@@ -165,7 +165,7 @@ internal extension Inspector {
         return try cast(value: child, type: T.self)
     }
 
-    static func attribute(path: String, value: Any) throws -> Any {
+    public static func attribute(path: String, value: Any) throws -> Any {
         return try attribute(path: path, value: value, type: Any.self)
     }
 
@@ -216,13 +216,13 @@ internal extension Inspector {
         }
     }
 
-    enum GenericParameters {
+    public enum GenericParameters {
         case keep
         case remove
         case customViewPlaceholder
     }
 
-    static func typeName(value: Any,
+    public static func typeName(value: Any,
                          namespaced: Bool = false,
                          generics: GenericParameters = .keep) -> String {
         if value is Any.Type {
@@ -402,7 +402,7 @@ internal extension Inspector {
     #if swift(>=6.0)
     @MainActor
     #endif
-    static func unwrap(view: Any, medium: Content.Medium) throws -> Content {
+    public static func unwrap(view: Any, medium: Content.Medium) throws -> Content {
         return try unwrap(content: Content(view, medium: medium))
     }
 
